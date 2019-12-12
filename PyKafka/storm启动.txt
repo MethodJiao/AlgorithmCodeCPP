@@ -1,0 +1,21 @@
+opt/ZooKeeper/server1/zookeeper/bin/zkServer.sh start
+
+opt/ZooKeeper/server2/zookeeper/bin/zkServer.sh start
+
+opt/ZooKeeper/server3/zookeeper/bin/zkServer.sh start
+
+opt/Storm/server1/storm/bin/storm nimbus &
+
+opt/Storm/server1/storm/bin/storm supervisor &
+
+opt/Storm/server1/storm/bin/storm ui &
+
+opt/Storm/server2/storm/bin/storm supervisor &
+
+opt/Storm/server3/storm/bin/storm supervisor &
+
+/opt/kafka/kafka_2.12-2.2.0/bin/kafka-server-start.sh /opt/kafka/kafka_2.12-2.2.0/config/server.properties
+
+/opt/kafka/kafka_2.12-2.2.0/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test 
+
+/opt/kafka/kafka_2.12-2.2.0/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning

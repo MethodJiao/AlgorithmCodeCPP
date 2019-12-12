@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="IteratorDelete" targetName="IteratorDelete" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="524f01d0-0d64-4394-8fc0-cb3994041298" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>remove_if</find>
+      <find>remove</find>
+    </findStrings>
+  </component>
+  <component name="ProjectId" id="1PJ06ECYN7X8FghYXC2woa7RRwT" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="IteratorDelete" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="IteratorDelete" TARGET_NAME="IteratorDelete" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="IteratorDelete" RUN_TARGET_NAME="IteratorDelete">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="524f01d0-0d64-4394-8fc0-cb3994041298" name="Default Changelist" comment="" />
+      <created>1560244776654</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1560244776654</updated>
+      <workItem from="1560244778170" duration="1394000" />
+      <workItem from="1560321908214" duration="3523000" />
+      <workItem from="1560392469927" duration="1858000" />
+      <workItem from="1560403086274" duration="386000" />
+      <workItem from="1562220418097" duration="17000" />
+      <workItem from="1562220451936" duration="160000" />
+      <workItem from="1562224675819" duration="2098000" />
+      <workItem from="1562291423118" duration="997000" />
+      <workItem from="1562896004560" duration="1164000" />
+      <workItem from="1564725414609" duration="51000" />
+      <workItem from="1565315456967" duration="794000" />
+      <workItem from="1565576361392" duration="23000" />
+      <workItem from="1565576406997" duration="269000" />
+      <workItem from="1565576719585" duration="37000" />
+      <workItem from="1568624340495" duration="333000" />
+      <workItem from="1569741903445" duration="575000" />
+      <workItem from="1571711474614" duration="149000" />
+      <workItem from="1571711705865" duration="63000" />
+      <workItem from="1572578533041" duration="178000" />
+      <workItem from="1573527711740" duration="2000" />
+      <workItem from="1573527724134" duration="638000" />
+      <workItem from="1574046253874" duration="348000" />
+      <workItem from="1574046985296" duration="159000" />
+      <workItem from="1574239622102" duration="2666000" />
+      <workItem from="1574303004136" duration="1603000" />
+      <workItem from="1574307857428" duration="2149000" />
+      <workItem from="1574645428322" duration="38000" />
+      <workItem from="1574646333541" duration="54000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>26</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="hash" />
+        <watch expression="val" />
+        <watch expression="h" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
