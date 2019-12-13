@@ -21,7 +21,9 @@
 
 #if __APPLE__
 #undef daemon
+
 extern int daemon(int, int);
+
 #endif
 
 #define PIPE_READ 0
@@ -34,7 +36,7 @@ extern int daemon(int, int);
 struct buffer_chain_t {
     char bytes[BUFFER_CHAIN_LINK_SIZE];
     size_t len;
-    struct buffer_chain_t* next;
+    struct buffer_chain_t *next;
 };
 
 struct sockaddr_un addr;
@@ -43,17 +45,16 @@ struct sockaddr_in addr_in;
 char *socket_path;
 char *pid_file;
 
-void proc_exit() {}
+void proc_exit(int sig) {}
 
-struct buffer_chain_t* read_pipe(int fd)
-{
+struct buffer_chain_t *read_pipe(int fd) {
     struct buffer_chain_t *buffers;
     struct buffer_chain_t *curr, *next;
     size_t count;
     ssize_t n, space;
     char *p;
 
-    buffers = (struct buffer_chain_t*)malloc(sizeof(struct buffer_chain_t));
+    buffers = (struct buffer_chain_t *) malloc(sizeof(struct buffer_chain_t));
     if (!buffers) {
         perror("buffer allocation error");
         exit(-1);
@@ -64,10 +65,12 @@ struct buffer_chain_t* read_pipe(int fd)
     space = BUFFER_CHAIN_LINK_SIZE;
     p = curr->bytes;
     while ((n = read(fd, p, space)) > 0) {
-        p += n; count += n; space -= n;
+        p += n;
+        count += n;
+        space -= n;
         if (space == 0) {
             /* allocate new chain link, reset count */
-            next = (struct buffer_chain_t*)malloc(sizeof(struct buffer_chain_t));
+            next = (struct buffer_chain_t *) malloc(sizeof(struct buffer_chain_t));
             if (!next) {
                 perror("buffer allocation error");
                 exit(-1);
@@ -86,9 +89,8 @@ struct buffer_chain_t* read_pipe(int fd)
 }
 
 
-size_t total_bytes(struct buffer_chain_t* buffers)
-{
-    struct buffer_chain_t* curr;
+size_t total_bytes(struct buffer_chain_t *buffers) {
+    struct buffer_chain_t *curr;
     size_t count;
 
     curr = buffers;
@@ -102,8 +104,7 @@ size_t total_bytes(struct buffer_chain_t* buffers)
 }
 
 
-void free_buffer_chain(struct buffer_chain_t* buffers)
-{
+void free_buffer_chain(struct buffer_chain_t *buffers) {
     struct buffer_chain_t *curr, *next;
 
     curr = buffers;
@@ -116,8 +117,7 @@ void free_buffer_chain(struct buffer_chain_t* buffers)
 }
 
 
-int create_child(int fd, const char* cmd, char* const argv[], char* const env[], int fd_in, size_t in_byte_count)
-{
+int create_child(int fd, const char *cmd, char *const argv[], char *const env[], int fd_in, size_t in_byte_count) {
     int stdin_pipe[2];
     int stdout_pipe[2];
     int stderr_pipe[2];
@@ -261,8 +261,7 @@ int create_child(int fd, const char* cmd, char* const argv[], char* const env[],
     return fork_result;
 }
 
-void terminate(int sig)
-{
+void terminate(int sig) {
     /* remove unix-socket-path */
     if (socket_path != NULL) {
         unlink(socket_path);
@@ -278,8 +277,7 @@ void terminate(int sig)
     raise(sig);
 }
 
-int main(int argc, char *argv[], char *envp[])
-{
+int main(int argc, char *argv[], char *envp[]) {
     int i, fd, cl, rc;
     char buf[2048];
     char *p, *end, *bc;
@@ -287,7 +285,7 @@ int main(int argc, char *argv[], char *envp[])
     size_t data_len;
     char *child_argv[4];
     int port;
-    FILE* f;
+    FILE *f;
     int daemonize = 1;
     int reuseaddr = 1;
 
@@ -310,12 +308,11 @@ int main(int argc, char *argv[], char *envp[])
 
         setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &reuseaddr, sizeof(int));
 
-        if (bind(fd, (struct sockaddr*)&addr_in, sizeof(addr_in)) == -1) {
+        if (bind(fd, (struct sockaddr *) &addr_in, sizeof(addr_in)) == -1) {
             perror("bind error");
             return errno;
         }
-    }
-    else {
+    } else {
         if (access(socket_path, X_OK) != -1) {
             errno = EEXIST;
             perror("socket_path error");
@@ -326,11 +323,11 @@ int main(int argc, char *argv[], char *envp[])
         fd = socket(AF_UNIX, SOCK_STREAM, 0);
         memset(&addr, 0, sizeof(addr));
         addr.sun_family = AF_UNIX;
-        strncpy(addr.sun_path, socket_path, sizeof(addr.sun_path)-1);
+        strncpy(addr.sun_path, socket_path, sizeof(addr.sun_path) - 1);
 
         setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &reuseaddr, sizeof(int));
 
-        if (bind(fd, (struct sockaddr*)&addr, sizeof(addr)) == -1) {
+        if (bind(fd, (struct sockaddr *) &addr, sizeof(addr)) == -1) {
             perror("bind error");
             return errno;
         }
@@ -342,8 +339,8 @@ int main(int argc, char *argv[], char *envp[])
     }
 
     /* check foreground flag */
-    for (i=2; i<=argc-1; i++) {
-        if (strcmp(argv[i], "--foreground")==0) {
+    for (i = 2; i <= argc - 1; i++) {
+        if (strcmp(argv[i], "--foreground") == 0) {
             daemonize = 0;
             break;
         }
@@ -354,12 +351,11 @@ int main(int argc, char *argv[], char *envp[])
 //    }
 
     if (argc > 2) {
-        if (strcmp(argv[2], "--foreground")==0) {
+        if (strcmp(argv[2], "--foreground") == 0) {
             if (argc > 3) {
                 pid_file = strdup(argv[3]);
             }
-        }
-        else {
+        } else {
             pid_file = strdup(argv[2]);
         }
 
@@ -376,15 +372,17 @@ int main(int argc, char *argv[], char *envp[])
     signal(SIGINT, terminate);
 
     while (1) {
-        if ( (cl = accept(fd, NULL, NULL)) == -1) {
+        //有链接传入 否则阻塞
+        if ((cl = accept(fd, NULL, NULL)) == -1) {
             perror("accept error");
             return errno;
         }
-
-        if (fork()==0) {
+        //子进程
+        if (fork() == 0) {
             /* child */
             memset(buf, 0, sizeof(buf));
-            p = bc = buf; count = sizeof(buf)-1;
+            p = bc = buf;
+            count = sizeof(buf) - 1;
             while (count > 0) {
                 rc = read(cl, p, 1);
                 if (rc == 0) {
@@ -411,8 +409,7 @@ int main(int argc, char *argv[], char *envp[])
                 }
                 p += rc;
                 count -= rc;
-            }
-            while (count > 0);
+            } while (count > 0);
             sscanf(bc, "%zu", &data_len);
 
             /* execute command */
@@ -425,8 +422,7 @@ int main(int argc, char *argv[], char *envp[])
             close(cl);
 
             exit(0);
-        }
-        else {
+        } else {
             /* parent */
             close(cl);
         }
