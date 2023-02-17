@@ -2,10 +2,11 @@
 //
 
 #include <iostream>
-
+#include "1TimeComplexity.cpp"
 int main()
 {
-    std::cout << "Hello World!\n";
+    int count = constant(100);
+    std::cout << count<<endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
