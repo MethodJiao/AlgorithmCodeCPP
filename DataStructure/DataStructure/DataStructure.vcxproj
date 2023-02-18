@@ -128,6 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="1TimeComplexity.cpp" />
+    <ClCompile Include="2SpaceComplexity.cpp" />
+    <ClCompile Include="3Aarray.cpp" />
     <ClCompile Include="DataStructure.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

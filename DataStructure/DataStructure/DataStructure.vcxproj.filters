@@ -21,5 +21,11 @@
     <ClCompile Include="1TimeComplexity.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="2SpaceComplexity.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="3Aarray.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

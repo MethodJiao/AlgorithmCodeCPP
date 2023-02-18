@@ -2,11 +2,16 @@
 //
 
 #include <iostream>
-#include "1TimeComplexity.cpp"
+//#include "1TimeComplexity.cpp"
+//#include "2SpaceComplexity.cpp"
+#include "3Aarray.cpp"
+
 int main()
 {
-    int count = constant(100);
-    std::cout << count<<endl;
+    //TreeNode* node = buildTree(3);
+    //vectorAccess();
+    vectorSort();
+    std::cout << endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
