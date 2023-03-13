@@ -78,3 +78,13 @@ struct ListNode {
 	ListNode* prev;  // 指向前驱结点的指针（引用）
 	ListNode(int x) : val(x), next(nullptr), prev(nullptr) {}  // 构造函数
 };
+
+
+/*             数组          列表
+存储方式
+数据结构长度
+内存使用率
+优势操作
+
+*/
+

@@ -131,6 +131,8 @@
     <ClCompile Include="2SpaceComplexity.cpp" />
     <ClCompile Include="3Aarray.cpp" />
     <ClCompile Include="4List.cpp" />
+    <ClCompile Include="5Stack.cpp" />
+    <ClCompile Include="6Queue.cpp" />
     <ClCompile Include="DataStructure.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
